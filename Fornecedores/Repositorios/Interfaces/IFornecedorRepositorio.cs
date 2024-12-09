@@ -4,7 +4,7 @@ namespace Fornecedores.Repositorios.Interfaces
 {
     public interface IFornecedorRepositorio
     {
-        Task<List<FornecedorModel>> BuscarTodosFornecedores()
+        Task<List<FornecedorModel>> BuscarTodosFornecedores();
         Task<FornecedorModel> BuscarFornecedorPorId(int id);
         Task<FornecedorModel> Adicionar(FornecedorModel fornecedor);
 
