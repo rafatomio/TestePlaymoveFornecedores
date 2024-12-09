@@ -1,20 +1,22 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using Fornecedores.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fornecedores.Model
+namespace Fornecedores.Data
 {
-    public class FornecedorContext : DbContext
+    public class SistemaFornecedorDbContext : DbContext
     {
-        public FornecedorContext(DbContextOptions<FornecedorContext> options) : base(options)
+
+        public SistemaFornecedorDbContext(DbContextOptions<SistemaFornecedorDbContext> options) : base(options) 
         {
-            Database.EnsureCreated();
         }
 
         public DbSet<FornecedorModel> Fornecedores { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }
