@@ -1,4 +1,9 @@
 
+using Fornecedores.Data;
+using Fornecedores.Repositorios;
+using Fornecedores.Repositorios.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 namespace Fornecedores
 {
     public class Program
@@ -13,6 +18,13 @@ namespace Fornecedores
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<SistemaFornecedorDbContext>(
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("Database"))
+                );
+
+            builder.Services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
 
             var app = builder.Build();
 
